@@ -4,19 +4,32 @@
  */
 package br.eti.kge.OSApiApplication.domain.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author KGe
  */
+
+@Entity
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
     private String email;
+    
+    @Column(name = "telefone")
     private String fone;
 
     
     public Cliente() {
+        // Construtor Default
     }
 
     public Cliente(long id, String nome, String email, String fone) {
