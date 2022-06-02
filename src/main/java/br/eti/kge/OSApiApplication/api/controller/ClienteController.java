@@ -8,6 +8,7 @@ import br.eti.kge.OSApiApplication.domain.model.Cliente;
 import br.eti.kge.OSApiApplication.domain.repository.ClienteRepository;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,14 +60,14 @@ public class ClienteController {
     
     @PostMapping("/clientes")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente adicionar(@RequestBody Cliente cliente) {
+    public Cliente adicionar(@Valid @RequestBody Cliente cliente) {
         
         return clienteRepository.save(cliente);
         
     }
     
     @PutMapping("/clientes/{clienteID}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long clienteID,
+    public ResponseEntity<Cliente> atualizar(@Valid @PathVariable Long clienteID,
                                              @RequestBody Cliente cliente) {
         
         // Verifica se o cliente existe
